@@ -34,12 +34,16 @@ export async function getStaticProps() {
 
 export default function Home({ bodyParts }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.bigContainer}>
       <Head>
         <title>Digital Scribbles</title>
         <meta name="description" content="A blog tutorial made with JAMstack" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <div>
+        <img className={styles.imageBox} src="/bg.jpg"/>
+      </div>
 
       <main className={styles.main}>
         {bodyParts.map((post) => (

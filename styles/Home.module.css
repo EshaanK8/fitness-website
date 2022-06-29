@@ -7,7 +7,19 @@
   font-size: 2rem;
 }
 
+.bigContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageBox { 
+  width: 100%; 
+  max-width: 100%; 
+  height: auto;
+} 
+
 .main {
+  flex:1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 3rem;

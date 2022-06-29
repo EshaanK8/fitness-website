@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useEffect, useState, Fragment } from "react";
 
 import { IconButton} from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
@@ -180,6 +181,11 @@ export default function Chest({ exercises, part }) {
     <div className={styles.container}>
       <div className={styles.topBar}>
         <div className={styles.titleBox}>
+          <Link href="/">
+            <IconButton aria-label="remove exercise">
+              <ArrowBackIcon className={styles.backIcon} sx={{ fontSize: "3rem" }}/>
+            </IconButton>
+          </Link>
           <img src={`/${part}.png`} className={styles.partIcon}></img>
           <h1 className={styles.title}>{capitalizeFirst(part)}</h1>
         </div>
