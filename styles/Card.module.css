@@ -1,6 +1,5 @@
 .card {
   margin-top: 5rem;
-  border-radius: 2rem;
   overflow: hidden;
   box-shadow: 15px 20px 40px rgba(216, 211, 211, 0.4);
 }
@@ -17,7 +16,7 @@
 }
 
 .card img:hover {
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .card img {

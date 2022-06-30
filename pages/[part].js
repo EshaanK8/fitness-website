@@ -35,9 +35,7 @@ const QUERY = gql `
       title,
       slug,
       part,
-      content {
-        html
-      }
+      content
       coverPhoto {
         url
       }
@@ -75,8 +73,15 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function Chest({ exercises, part }) {
+const map = new Map();
+map.set('chest', '#EAD6CD');
+map.set('legs', '#8096FE');
+map.set('back', '#9BE0E3');
+map.set('abs', '#9BE0E3');
+map.set('arms', '#EAD6CD');
+map.set('shoulders', '#8096FE');
 
+export default function Part({ exercises, part }) {
   const getFromStorage = (key) => {
     if(typeof window !== 'undefined'){
          window.localStorage.getItem(key)
@@ -122,6 +127,7 @@ export default function Chest({ exercises, part }) {
     var myArray = cart.filter(function( obj ) {
       return obj.title !== product.title;
     });
+    setToStorage('cart', JSON.stringify(myArray));
     setCart(myArray)
     console.log(myArray);
   }
@@ -147,7 +153,7 @@ export default function Chest({ exercises, part }) {
       onClick={toggleDrawer(anchor, true)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <ListItemText primary={"Saved Exercises"} className={styles.listTitle} />
+      <h1 className={styles.listTitle}>Saved Exercises</h1>
       <Divider />
       <List>
         {cart.map((exercise) => (
@@ -155,7 +161,7 @@ export default function Chest({ exercises, part }) {
               <ListItemButton className={styles.listBtnContainer}>
                   <div className={styles.listBtnNameContainer}>
                     <Link href={`/exercises/${exercise.slug}`}>
-                      <ListItemText primary={exercise.title} className={styles.listItem} />
+                      <h1 className={styles.listItem}>{exercise.title}</h1>
                     </Link>
                   </div>
                   <div className={styles.listBtnDeleteContainer}>
@@ -174,6 +180,8 @@ export default function Chest({ exercises, part }) {
   const capitalizeFirst = str => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
+
+  
 
 
   //JSX
@@ -218,6 +226,7 @@ export default function Chest({ exercises, part }) {
             slug={exercise.slug}
             part={exercise.part}
             addItem={addToCart}
+            color={map.get(exercise.part)}
           />
         ))}
       </main>

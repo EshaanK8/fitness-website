@@ -1,27 +1,48 @@
-.title h1 {
-  color: rgb(39, 39, 39);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-  font-size: 2rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
 
 .bigContainer {
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
 }
 
-.imageBox { 
-  width: 100%; 
-  max-width: 100%; 
-  height: auto;
-} 
+.landingPage {
+  height: 100vh;
+  background: url(/bg.jpg) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: center;
+}
 
-.main {
-  flex:1;
+.partContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 3rem;
-  margin: 0% 15%;
+  padding: 0% 15%;
+}
+
+.t1 {
+  margin-top:1%;
+  color: #394F8A;
+  font-family: Inter;
+  font-size: 3.5em;
+}
+
+.t2 {
+  color: #394F8A;
+  font-family: Inter;
+  font-weight:200;
+}
+
+.exploreTitleContainer {
+  text-align: center;
+  width: 100%;
+}
+.exploreTitle {
+  color: #394F8A;
+  font-family: Inter;
+  font-size: 3em;
+  font-weight: 400;
 }

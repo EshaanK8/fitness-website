@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 //Components
 import BPCard from "../components/BPCard";
+import { flexbox } from '@mui/system';
 
 
 const graphcms = new GraphQLClient('https://api-ca-central-1.graphcms.com/v2/cl4g4ujw70ytc01z65xgxbgmm/master');
@@ -32,29 +33,31 @@ export async function getStaticProps() {
   };
 }
 
+const alternatingColor = ['#EAD6CD', '#8096FE', '#9BE0E3', '#9BE0E3', '#EAD6CD', '#8096FE']; //Card colours
+
 export default function Home({ bodyParts }) {
   return (
     <div className={styles.bigContainer}>
-      <Head>
-        <title>Digital Scribbles</title>
-        <meta name="description" content="A blog tutorial made with JAMstack" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div>
-        <img className={styles.imageBox} src="/bg.jpg"/>
+      <div className={styles.landingPage}>
+        <img className={styles.logo} src="/logo.png"/>
+        <h1 className={styles.t1}>Train Smarter <span className={styles.t2}>Not Harder</span></h1>
       </div>
-
-      <main className={styles.main}>
-        {bodyParts.map((post) => (
-          <BPCard
-            title={post.title}
-            coverPhoto={post.coverPhoto}
-            key={post.id}
-            slug={post.slug}
-          />
-        ))}
-      </main>
+      <div>
+        <div className={styles.exploreTitleContainer}>
+          <h1 className={styles.exploreTitle}>Explore Our Workouts</h1>
+        </div>
+        <div className={styles.partContainer}>
+          {bodyParts.map((post, index) => (
+            <BPCard
+              title={post.title}
+              coverPhoto={post.coverPhoto}
+              key={post.id}
+              slug={post.slug}
+              color={alternatingColor[index]}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

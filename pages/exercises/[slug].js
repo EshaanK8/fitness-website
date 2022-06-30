@@ -5,6 +5,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Link from 'next/link';
+import { RichText } from '@graphcms/rich-text-react-renderer';
 
 import { IconButton} from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -31,9 +32,7 @@ const QUERY = gql`
       slug
       video
       part
-      content {
-        html
-      }
+      content
       coverPhoto {
         id
         url
@@ -99,23 +98,24 @@ export default function Post({exercise}) {
   }, []);
 
 
-  //Add a workout to cart
-  const addToCart = (product) => {
-    //Only add if it is not already in the cart
-    if (!(cart.filter(function(e) { return e.title === product.title; }).length > 0)) {
-      setToStorage('cart', JSON.stringify([...cart, product]));
-      setCart([...cart, product]);
-    }
-    console.log(cart);
-    console.log(product.title);
-    console.log(product.slug);
+ //Add a workout to cart
+ const addToCart = (product) => {
+  //Only add if it is not already in the cart
+  if (!(cart.filter(function(e) { return e.title === product.title; }).length > 0)) {
+    setToStorage('cart', JSON.stringify([...cart, product]));
+    setCart([...cart, product]);
   }
+  console.log(cart);
+  console.log(product.title);
+  console.log(product.slug);
+}
 
   //Add a workout to cart
   const removeFromCart = (product) => {
     var myArray = cart.filter(function( obj ) {
       return obj.title !== product.title;
     });
+    setToStorage('cart', JSON.stringify(myArray));
     setCart(myArray)
     console.log(myArray);
   }
@@ -141,7 +141,7 @@ export default function Post({exercise}) {
       onClick={toggleDrawer(anchor, true)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <ListItemText primary={"Saved Exercises"} className={styles.listTitle} />
+      <h1 className={styles.listTitle}>Saved Exercises</h1>
       <Divider />
       <List>
         {cart.map((exercise) => (
@@ -149,7 +149,7 @@ export default function Post({exercise}) {
               <ListItemButton className={styles.listBtnContainer}>
                   <div className={styles.listBtnNameContainer}>
                     <Link href={`/exercises/${exercise.slug}`}>
-                      <ListItemText primary={exercise.title} className={styles.listItem} />
+                      <h1 className={styles.listItem}>{exercise.title}</h1>
                     </Link>
                   </div>
                   <div className={styles.listBtnDeleteContainer}>
@@ -200,13 +200,21 @@ export default function Post({exercise}) {
           ))}
         </div>
       </div>
-      <main className={styles.blog}>
-        <img src={exercise.coverPhoto.url} className={styles.cover} alt=""/>
-        <div className={styles.title}>
-        </div>
-        <h2>{exercise.title}</h2>
-        <div className={styles.content} dangerouslySetInnerHTML={{__html: exercise.content.html}}></div>
+      <main className={styles.contentBox}>
         <YoutubeEmbed embedId={exercise.video} />
+        <div className={styles.nameBox}>
+          <div className={styles.eTitleBox}>
+            <h1 className={styles.eTitle}>About The {exercise.title}</h1>
+          </div>
+          <div className={styles.eButtonBox}>
+            {!(cart.filter(function(e) { return e.title === exercise.title; }).length > 0) ? (
+            <Button className={styles.saveButton} onClick={() => addToCart({title: exercise.title, slug: exercise.slug})}>Save Exercise</Button>
+            ) : (
+              <Button className={styles.saveButton}>Saved</Button>
+            )}
+          </div>
+        </div>
+        <p className={styles.content}>{exercise.content}</p>
       </main>
     </div>
   )
