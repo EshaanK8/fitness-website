@@ -63,7 +63,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const part = params.part; //The body part that this page displays
   const data = await graphcms.request(QUERY);
-  const exercises = data;
+  const {exercises} = data;
   return {
     props: {
       exercises,
