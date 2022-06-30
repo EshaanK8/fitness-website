@@ -73,13 +73,14 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const map = new Map();
-map.set('chest', '#EAD6CD');
-map.set('legs', '#8096FE');
-map.set('back', '#9BE0E3');
-map.set('abs', '#9BE0E3');
-map.set('arms', '#EAD6CD');
-map.set('shoulders', '#8096FE');
+let map = new Map([
+  ['chest', '#EAD6CD'],
+  ['legs', '#8096FE'],
+  ['back', '#9BE0E3'],
+  ['abs', '#9BE0E3'],
+  ['arms', '#EAD6CD'],
+  ['shoulders', '#8096FE']
+]);
 
 export default function Part({ exercises, part }) {
   const getFromStorage = (key) => {
@@ -194,7 +195,7 @@ export default function Part({ exercises, part }) {
               <ArrowBackIcon className={styles.backIcon} sx={{ fontSize: "3rem" }}/>
             </IconButton>
           </Link>
-          <img src={`/${part}.png`} className={styles.partIcon}></img>
+          <img src={`/${part}.png`} alt="" className={styles.partIcon}></img>
           <h1 className={styles.title}>{capitalizeFirst(part)}</h1>
         </div>
         <div className={styles.iconBox}>
