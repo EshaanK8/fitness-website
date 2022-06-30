@@ -90,12 +90,12 @@ export default function Post({exercise}) {
 
   //Fetch cart data and set it
   useEffect(() => {
-    if (localStorage.getItem("cart") == null) {
+    if (getFromStorage("cart") == null) {
       setToStorage("cart", JSON.stringify([{title: "Bench Press", slug: "bench-press"}]));
       setCart([{title: "Bench Press", slug: "bench-press"}]);
       console.log("First time loading cart. Cart initialized to just bench press");
     } else {
-      setCart(JSON.parse(localStorage.getItem("cart")))
+      setCart(JSON.parse(getFromStorage("cart")))
       console.log("cart initialized to previous data");
     }
   }, []);

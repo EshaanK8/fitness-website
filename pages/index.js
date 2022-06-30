@@ -38,14 +38,26 @@ const alternatingColor = ['#EAD6CD', '#8096FE', '#9BE0E3', '#9BE0E3', '#EAD6CD',
 
 export default function Home({ bodyParts }) {
 
+  const getFromStorage = (key) => {
+    if(typeof window !== 'undefined'){
+         window.localStorage.getItem(key)
+    }
+  }
+
+  const setToStorage = (key,value) => {
+    if(typeof window !== 'undefined'){
+         return window.localStorage.setItem(key,value)
+    }
+  }
+
   //Fetch cart data
   useEffect(() => {
-    console.log(localStorage.getItem("cart"));
-    if (localStorage.getItem("cart") == null) {
+    console.log(getFromStorage("cart"));
+    if (getFromStorage("cart") == null) {
       setToStorage("cart", JSON.stringify([{title: "Bench Press", slug: "bench-press"}]));
       console.log("First time loading cart. Cart initialized to just bench press");
     } else {
-      console.log("Cart initialized to previous data " + localStorage.getItem("cart"));
+      console.log("Cart initialized to previous data " + getFromStorage("cart"));
     }
   }, []);
 
