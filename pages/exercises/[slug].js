@@ -86,7 +86,7 @@ export default function Post({exercise}) {
 
   //State
   const [state, setState] = useState({right: false});
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([{title: "Bench Press", slug: "bench-press"}]);
 
   //Fetch cart data and set it
   useEffect(() => {
