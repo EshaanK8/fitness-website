@@ -14,9 +14,6 @@ export default function Card({title, coverPhoto, slug, addItem, part, color}) {
             </Link>
             <div className={styles.text}>
                 <h2>{title}</h2>
-                <IconButton aria-label="add exercise" className={styles.listBtn} onClick={() => addItem({title: title, slug: slug})}>
-                    <AddCircleIcon className={styles.listIcon} sx={{ fontSize: "3rem" }}/>
-                </IconButton>
             </div>
         </div>
     )

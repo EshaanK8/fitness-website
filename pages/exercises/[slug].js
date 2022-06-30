@@ -210,7 +210,7 @@ export default function Post({exercise}) {
             {!(cart.filter(function(e) { return e.title === exercise.title; }).length > 0) ? (
             <Button className={styles.saveButton} onClick={() => addToCart({title: exercise.title, slug: exercise.slug})}>Save Exercise</Button>
             ) : (
-              <Button className={styles.saveButton}>Saved</Button>
+              <Button className={styles.savedButton}>Saved</Button>
             )}
           </div>
         </div>
