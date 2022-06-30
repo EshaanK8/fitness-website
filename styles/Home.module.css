@@ -21,6 +21,7 @@
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 3rem;
   padding: 0% 15%;
+  padding-bottom: 5%;
 }
 
 .t1 {
