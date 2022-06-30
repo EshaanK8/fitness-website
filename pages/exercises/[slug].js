@@ -91,7 +91,7 @@ export default function Post({exercise}) {
   //Fetch cart data and set it
   useEffect(() => {
     if (localStorage.getItem("cart") == null) {
-      setToStorage("cart", "");
+      setToStorage("cart", JSON.stringify([]));
       setCart([]);
       console.log("First time loading cart. Cart initialized to empty");
     } else {

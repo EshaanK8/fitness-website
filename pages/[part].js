@@ -103,7 +103,7 @@ export default function Part({ exercises, part }) {
   useEffect(() => {
     console.log(localStorage.getItem("cart"));
     if (localStorage.getItem("cart") == null) {
-      setToStorage("cart", "");
+      setToStorage("cart", JSON.stringify([]));
       setCart([]);
       console.log("First time loading cart. Cart initialized to empty");
     } else {
