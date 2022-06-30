@@ -9,7 +9,7 @@ export default function Card({title, coverPhoto, slug, addItem, part, color}) {
         <div className={styles.card} style={{backgroundColor: color}}>
             <Link href={`/exercises/${slug}`}>
                 <div className={styles.imgContainer}>
-                    <img src={coverPhoto.url} alt=""/>
+                    <img src={coverPhoto.url} className={styles.coverPhoto} alt=""/>
                 </div>
             </Link>
             <div className={styles.text}>

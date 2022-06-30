@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import styles from '../styles/Card.module.css'
+import styles from '../styles/BPCard.module.css'
 
 export default function BPCard({title, coverPhoto, slug, color}) {
     return (

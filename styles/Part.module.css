@@ -52,7 +52,10 @@
 }
 
 .partIcon {
-    width: 10%;
+    display: block;
+    min-height: 105px;
+    max-height:105px;
+    max-width:200px;
 }
 
 .title {

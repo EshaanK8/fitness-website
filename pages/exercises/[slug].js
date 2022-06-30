@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Link from 'next/link';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import Comments from '../../components/Comments';
+import Timer from '../../components/Timer';
 
 import { IconButton} from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -219,6 +220,7 @@ export default function Post({exercise}) {
         <h1 className={styles.dTitle}>Discussion</h1>
       </main>
       <Comments/>
+      <Timer/>
     </div>
   )
 }
