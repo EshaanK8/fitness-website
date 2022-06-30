@@ -103,9 +103,9 @@ export default function Part({ exercises, part }) {
   useEffect(() => {
     console.log(localStorage.getItem("cart"));
     if (localStorage.getItem("cart") == null) {
-      setToStorage("cart", JSON.stringify([]));
-      setCart([]);
-      console.log("First time loading cart. Cart initialized to empty");
+      setToStorage("cart", JSON.stringify([{title: "Bench Press", slug: "bench-press"}]));
+      setCart([{title: "Bench Press", slug: "bench-press"}]);
+      console.log("First time loading cart. Cart initialized to just bench press");
     } else {
       setCart(JSON.parse(localStorage.getItem("cart")))
       console.log("cart initialized to previous data");
