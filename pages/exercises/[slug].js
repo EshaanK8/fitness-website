@@ -6,6 +6,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Link from 'next/link';
 import { RichText } from '@graphcms/rich-text-react-renderer';
+import Comments from '../../components/Comments';
 
 import { IconButton} from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -215,7 +216,9 @@ export default function Post({exercise}) {
           </div>
         </div>
         <p className={styles.content}>{exercise.content}</p>
+        <h1 className={styles.dTitle}>Discussion</h1>
       </main>
+      <Comments/>
     </div>
   )
 }

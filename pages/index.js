@@ -39,7 +39,7 @@ export default function Home({ bodyParts }) {
   return (
     <div className={styles.bigContainer}>
       <div className={styles.landingPage}>
-        <img className={styles.logo} src="/logo.png"/>
+        <img className={styles.logo} src="/logo.svg"/>
         <h1 className={styles.t1}>Train Smarter <span className={styles.t2}>Not Harder</span></h1>
       </div>
       <div>
