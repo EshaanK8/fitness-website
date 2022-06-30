@@ -36,10 +36,18 @@
   padding: 1rem 3rem;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
   .card {
     margin: 0rem 2rem;
   }
+}
+
+.name {
+  color: #394F8A;
+  font-family: Inter;
+  font-size: 1.5em;
+  font-weight: 500;
 }

@@ -13,7 +13,7 @@ export default function Card({title, coverPhoto, slug, addItem, part, color}) {
                 </div>
             </Link>
             <div className={styles.text}>
-                <h2>{title}</h2>
+                <h2 className={styles.name}>{title}</h2>
             </div>
         </div>
     )
