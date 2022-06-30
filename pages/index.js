@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {GraphQLClient, gql} from 'graphql-request';
 import Link from 'next/link';
+import React, { useEffect, useState, Fragment } from "react";
 
 //Components
 import BPCard from "../components/BPCard";
@@ -36,6 +37,18 @@ export async function getStaticProps() {
 const alternatingColor = ['#EAD6CD', '#8096FE', '#9BE0E3', '#9BE0E3', '#EAD6CD', '#8096FE']; //Card colours
 
 export default function Home({ bodyParts }) {
+
+  //Fetch cart data
+  useEffect(() => {
+    console.log(localStorage.getItem("cart"));
+    if (localStorage.getItem("cart") == null) {
+      setToStorage("cart", JSON.stringify([{title: "Bench Press", slug: "bench-press"}]));
+      console.log("First time loading cart. Cart initialized to just bench press");
+    } else {
+      console.log("Cart initialized to previous data " + localStorage.getItem("cart"));
+    }
+  }, []);
+
   return (
     <div className={styles.bigContainer}>
       <div className={styles.landingPage}>
