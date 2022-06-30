@@ -46,17 +46,20 @@ export default function Home({ bodyParts }) {
         <div className={styles.exploreTitleContainer}>
           <h1 className={styles.exploreTitle}>Explore Our Workouts</h1>
         </div>
-        <div className={styles.partContainer}>
-          {bodyParts.map((post, index) => (
-            <BPCard
-              title={post.title}
-              coverPhoto={post.coverPhoto}
-              key={post.id}
-              slug={post.slug}
-              color={alternatingColor[index]}
-            />
-          ))}
-        </div>
+        {(bodyParts)
+          ? <div className={styles.partContainer}>
+              {bodyParts.map((post, index) => (
+                <BPCard
+                  title={post.title}
+                  coverPhoto={post.coverPhoto}
+                  key={post.id}
+                  slug={post.slug}
+                  color={alternatingColor[index]}
+                />
+              ))}
+            </div>
+          : <div></div>
+        }
       </div>
     </div>
   );

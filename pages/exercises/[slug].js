@@ -145,24 +145,27 @@ export default function Post({exercise}) {
     >
       <h1 className={styles.listTitle}>Saved Exercises</h1>
       <Divider />
-      <List>
-        {cart.map((exercise) => (
-          <ListItem key={exercise.slug} disablePadding>
-              <ListItemButton className={styles.listBtnContainer}>
-                  <div className={styles.listBtnNameContainer}>
-                    <Link href={`/exercises/${exercise.slug}`}>
-                      <h1 className={styles.listItem}>{exercise.title}</h1>
-                    </Link>
-                  </div>
-                  <div className={styles.listBtnDeleteContainer}>
-                    <IconButton aria-label="remove exercise" onClick={() => removeFromCart(exercise)}>
-                      <DeleteIcon className={styles.deleteIcon} sx={{ fontSize: "2rem" }}/>
-                    </IconButton>
-                  </div>
-              </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      {(cart) 
+        ? <List>
+            {cart.map((exercise) => (
+              <ListItem key={exercise.slug} disablePadding>
+                  <ListItemButton className={styles.listBtnContainer}>
+                      <div className={styles.listBtnNameContainer}>
+                        <Link href={`/exercises/${exercise.slug}`}>
+                          <h1 className={styles.listItem}>{exercise.title}</h1>
+                        </Link>
+                      </div>
+                      <div className={styles.listBtnDeleteContainer}>
+                        <IconButton aria-label="remove exercise" onClick={() => removeFromCart(exercise)}>
+                          <DeleteIcon className={styles.deleteIcon} sx={{ fontSize: "2rem" }}/>
+                        </IconButton>
+                      </div>
+                  </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        : <div></div>
+      }
     </Box>
   );
 

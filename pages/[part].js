@@ -156,24 +156,27 @@ export default function Part({ exercises, part }) {
     >
       <h1 className={styles.listTitle}>Saved Exercises</h1>
       <Divider />
-      <List>
-        {cart.map((exercise) => (
-          <ListItem key={exercise.slug} disablePadding>
-              <ListItemButton className={styles.listBtnContainer}>
-                  <div className={styles.listBtnNameContainer}>
-                    <Link href={`/exercises/${exercise.slug}`}>
-                      <h1 className={styles.listItem}>{exercise.title}</h1>
-                    </Link>
-                  </div>
-                  <div className={styles.listBtnDeleteContainer}>
-                    <IconButton aria-label="remove exercise" onClick={() => removeFromCart(exercise)}>
-                      <DeleteIcon className={styles.deleteIcon} sx={{ fontSize: "2rem" }}/>
-                    </IconButton>
-                  </div>
-              </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      {(cart) 
+        ? <List>
+            {cart.map((exercise) => (
+              <ListItem key={exercise.slug} disablePadding>
+                  <ListItemButton className={styles.listBtnContainer}>
+                      <div className={styles.listBtnNameContainer}>
+                        <Link href={`/exercises/${exercise.slug}`}>
+                          <h1 className={styles.listItem}>{exercise.title}</h1>
+                        </Link>
+                      </div>
+                      <div className={styles.listBtnDeleteContainer}>
+                        <IconButton aria-label="remove exercise" onClick={() => removeFromCart(exercise)}>
+                          <DeleteIcon className={styles.deleteIcon} sx={{ fontSize: "2rem" }}/>
+                        </IconButton>
+                      </div>
+                  </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        : <div></div>      
+      }
     </Box>
   );
 
@@ -216,21 +219,25 @@ export default function Part({ exercises, part }) {
           ))}
         </div>
       </div>
-      <main className={styles.main}>
-        {exercises.filter((item) => {return item.part == part}).map((exercise) => (
-          <Card
-            title={exercise.title}
-            author={exercise.author}
-            coverPhoto={exercise.coverPhoto}
-            key={exercise.id}
-            datePublished={exercise.datePublished}
-            slug={exercise.slug}
-            part={exercise.part}
-            addItem={addToCart}
-            color={map.get(exercise.part)}
-          />
-        ))}
-      </main>
+
+      {(exercises.filter((item) => {return item.part == part}))        
+        ? <main className={styles.main}>
+            {exercises.filter((item) => {return item.part == part}).map((exercise) => (
+              <Card
+                title={exercise.title}
+                author={exercise.author}
+                coverPhoto={exercise.coverPhoto}
+                key={exercise.id}
+                datePublished={exercise.datePublished}
+                slug={exercise.slug}
+                part={exercise.part}
+                addItem={addToCart}
+                color={map.get(exercise.part)}
+              />
+            ))}
+          </main>
+        : <div></div>     
+      }
     </div>
     
   );
